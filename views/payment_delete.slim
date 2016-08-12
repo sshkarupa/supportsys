@@ -1,0 +1,23 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-12
+    h2 Delete Payment
+    p.small
+      |from&nbsp;
+      a href="/admin/users/edit/#{@user.id}" #{@user.name}
+    p.pay-title #{@payment.account} : #{@payment.amount} #{@user.currency} : #{commas(@user.id_cash)} : #{@payment.timecode.strftime("%d.%m.%Y %H:%M")}
+    h4.color-red You want to delete this payment. Are you sure?
+    .pay-img
+      a href="/uploads/#{@payment.filename}"
+        img.img-responsive.maw450 src="/uploads/#{@payment.filename}" alt="..."
+      form action="/admin/payments/#{@payment.id}" method="POST"
+        input type="hidden" name="_method" value="DELETE"
+        input.btn.btn-primary.btn-inline type="submit" value="Delete"
+        a.btn.btn-default.btn-inline role="button" href="/admin/payments" Cancel

@@ -1,0 +1,19 @@
+doctype 5
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="text/html; charset=utf-8"
+    meta http-equiv="Content-Type"
+    title Welcome to Support System
+    sass:
+      body
+        font-family: 'Trebuchet MS', Arial, sans-serif
+      p
+        font-size: 1.2em
+  body
+    h3 Support System
+    p A link to your account: <a href="#{settings.website}">#{settings.website}</a>
+    p
+      | Login: #{@user.email} <br />
+      | Password: #{@user.password}
+    p Your payment ID: #{commas(@user.id_cash)}

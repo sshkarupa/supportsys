@@ -1,0 +1,62 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/payments/new" Deposite accounts
+    li
+      a.navbar-link.p8 href="/info" Contacts
+    li
+      a.navbar-link.p8 href="/logout" Logout
+.row
+  .col-xs-12
+    h3 Deposite accounts
+.row
+  .col-xs-12.col-md-8.col-md-push-4
+    h4 The procedure for deposite
+    p
+      ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute
+      strong.color-red irure dolor in reprehenderit.
+    p
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    p
+      | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    p
+      | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    p
+      | Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+  .col-xs-12.col-md-4.col-md-pull-8
+
+    h4 Order
+
+    form#send_payment role="form" method="post" action="/payments/new" enctype="multipart/form-data"
+      .form-group
+        label Payment ID
+        input.form-control type="text"  disabled="" value="#{commas(@user.id_cash)}"
+
+      .form-group
+        label Account
+        select.form-control name="account"
+          - @user.account.split(':').each do |account|
+              option =account
+
+      .form-group
+        label Amount
+        input.form-control type="text"  placeholder="Введите сумму" name="amount" required=""
+
+
+      .form-group
+        label Data and Time of payment
+        .input-group.date#datetimepicker
+          .input-group-addon
+            span.glyphicon.glyphicon-calendar
+          input.form-control#datetimepicker type="text" name="timecode" required=""
+
+      .form-group
+        label for="InputFile" Cheque
+        input type="file" id="InputFile" name="file" required=""
+
+      .p
+        button.btn.btn-primary type="submit" Send
+
+
+

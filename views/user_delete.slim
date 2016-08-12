@@ -1,0 +1,16 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-12
+    h2 Delete User
+    h4.color-red You want to delete user '#{@user.name}'. Are you sure?
+    form action="/admin/users/#{@user.id}" method="POST"
+      input type="hidden" name="_method" value="DELETE"
+      input.btn.btn-primary.btn-inline type="submit" value="Delete"
+      a.btn.btn-default.btn-inline role="button" href="/admin/users" Cancel

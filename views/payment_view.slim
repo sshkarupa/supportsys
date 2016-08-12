@@ -1,0 +1,23 @@
+
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-12
+    h1 Payment
+    p.small
+      |from&nbsp;
+      a href="/admin/users/edit/#{@user.id}" #{@user.name}
+    p.pay-title #{@payment.account} : #{@payment.amount} #{@user.currency} : #{commas(@user.id_cash)} : #{@payment.timecode.strftime("%d.%m.%Y %H:%M")}
+    .pay-img
+      a href="/uploads/#{@payment.filename}"
+        img.img-responsive.maw450 src="/uploads/#{@payment.filename}" alt="..."
+    .back-link
+      a href="/admin/payments" ← Go back
+
+

@@ -1,0 +1,58 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-12
+    h1 Users
+    .table-responsive
+      table.table.table-bordered.table-striped
+        thead
+          tr.active
+            th #
+            th Name
+            th Email
+            th Currency
+            th Account
+            th ID
+            th Password
+            th Status
+            th.text-center Action
+        tbody
+          - @users.each do | user |
+            tr
+              td = user.id
+              td = user.name
+              td = user.email
+              td = user.currency
+              td = user.account
+              td = commas(user.id_cash)
+              td = user.password
+              td
+                - if user.block
+                  span.label.label-danger block
+                  - user_action = "Unblock"
+                - else
+                  span.label.label-success active
+                  - user_action = "Block"
+              td.text-center
+                .btn-group
+                  button.btn.btn-default.btn-xs.dropdown-toggle data-toggle="dropdown"
+                    'Action
+                    span.caret
+                  ul.dropdown-menu.pull-right
+                    li
+                      a href="/admin/users/#{user.id}/edit" Edit
+                    li
+                      a href="/admin/users/#{user.id}/block" #{user_action}
+                    li
+                      a href="/admin/users/#{user.id}/delete" Delete
+
+    a.btn.btn-primary href="/admin/users/create" role="button" Add user
+
+
+

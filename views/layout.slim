@@ -1,0 +1,25 @@
+doctype 5
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport"
+    title = settings.site_name || 'need to setup'
+    link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+    link rel="stylesheet" href="/libs/datetimepicker/bootstrap-datetimepicker.min.css"
+    link rel="stylesheet" href="/style.css"
+
+  body
+    .container
+      == yield
+
+      .row
+        .col-sm-12
+          .footer
+
+    script src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"
+    script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/locale/ru.js"
+    script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"
+    script src="/libs/maskedinput/jquery.maskedinput.min.js"
+    script src="/libs/datetimepicker/bootstrap-datetimepicker.min.js"
+    script src="/js/main.js"

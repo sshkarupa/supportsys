@@ -1,0 +1,5 @@
+db/*.db
+public/libs/bootstrap
+public/uploads/*
+.sass-cache/*
+.env

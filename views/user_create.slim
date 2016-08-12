@@ -1,0 +1,53 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-6
+    .wrapper
+      h1 User: new
+
+      form.forms method="post" action="/admin/users/create"
+
+        .form-group
+          label Name
+          input.form-control type="text"  value="" name="name"required=""
+
+        .form-group
+          label Email
+          input.form-control type="email"  value="" name="email" required=""
+
+        .form-group
+          label Currency
+          select.form-control name="currency"
+              option RUR
+              option UAH
+
+        .form-group
+          label Account
+          input.form-control type="text" value="" name="account" required=""
+
+        .form-group
+          label ID cash
+          input.form-control#id_cash type="text" value="" name="id_cash" required=""
+
+        .form-group
+          label Password
+          input.form-control type="text" value="" name="password" required=""
+
+
+        .checkbox
+          label
+            input type="checkbox" checked="" name="sending" Send login and password by email
+
+
+        .btn-box
+          button.btn.btn-primary name="submit" type="submit" value="Create" Create new user
+
+          a.btn.btn-default.float-right role="button" href="/admin/users" Cancel
+
+

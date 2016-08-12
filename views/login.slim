@@ -1,0 +1,22 @@
+body.login-page
+  .login-box
+    .login-logo
+      p
+        b = @form_title
+        |System
+    .login-box-body
+      p.login-box-msg Sign in to start your session
+      form action="#{@method_action}" method="post"
+        .form-group.has-feedback
+          input.form-control type="email" placeholder="Email" name="email"
+          span.glyphicon.glyphicon-envelope.form-control-feedback
+        .form-group.has-feedback
+          input.form-control type="password" placeholder="Password" name="password"
+          span.glyphicon.glyphicon-lock.form-control-feedback
+        .row
+          .col-xs-12
+            button.btn.btn-primary.btn-block.btn-flat.full-width type="submit" Sign In
+
+        == styled_flash
+
+

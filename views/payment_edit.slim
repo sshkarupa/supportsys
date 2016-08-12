@@ -1,0 +1,38 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-6
+    .wrapper
+      h1 Payment: edit
+      form.forms method="POST" action="/admin/payments/#{@payment.id}/edit"
+        input type="hidden" name="_method" value="PATCH"
+        .form-group
+          label Account
+          select.form-control name="account"
+            - @user.account.split(':').each do |account|
+              - if account.split('@')[0].to_i != @payment.account.to_i
+                  option = account
+              - else
+                option selected="" = account
+        .form-group
+          label for="inputAmount" Amount
+          input.form-control#inputAmount type="text" name="amount" value="#{@payment.amount}" required=""
+        .form-group
+          label Date and Time of payment
+          .input-group.date#datetimepicker
+            .input-group-addon
+              span.glyphicon.glyphicon-calendar
+            input.form-control type="text" name="timecode" value="#{@payment.timecode.strftime("%d.%m.%Y %H:%M")}" required=""
+        .checkbox
+          label
+            input type="checkbox" name="sending" Send email
+        .btn-box
+          button.btn.btn-primary name="submit" type="submit" value="Save" Save changes
+          a.btn.btn-default.float-right role="button" href="/admin/payments" Cancel
+

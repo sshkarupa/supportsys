@@ -1,0 +1,45 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-6
+    .wrapper
+      h1 User: edit
+      form.forms method="POST" action="/admin/users/#{@user.id}/edit"
+        input type="hidden" name="_method" value="PATCH"
+        .form-group
+          label Name
+          input.form-control type="text"  value="#{@user.name}" name="name"required=""
+        .form-group
+          label Email
+          input.form-control type="email"  value="#{@user.email}" name="email" required=""
+        .form-group
+          label Currency
+          select.form-control name="currency"
+            - if @user.currency == "RUR"
+              option selected="" RUR
+              option UAH
+            - else
+              option RUR
+              option selected="" UAH
+        .form-group
+          labelAccount
+          input.form-control type="text" value="#{@user.account}" name="account" required=""
+        .form-group
+          label ID cash
+          input.form-control type="text" value="#{commas(@user.id_cash)}" name="id_cash" required=""
+        .form-group
+          label Password
+          input.form-control type="text" value="#{@user.password}" name="password" required=""
+        .checkbox
+          label
+            input type="checkbox" name="sending" Send login and password by email
+        .btn-box
+          button.btn.btn-primary name="submit" type="submit" value="Save" Save changes
+          a.btn.btn-default.float-right role="button" href="/admin/users" Cancel
+

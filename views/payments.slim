@@ -1,0 +1,55 @@
+.top-menu
+  ul.nav.nav-pills.navbar-right
+    li
+      a.navbar-link.p8 href="/admin/users" Users
+    li
+      a.navbar-link.p8 href="/admin/payments" Payments
+    li
+      a.navbar-link.p8 href="/logout" Log out
+.row
+  .col-xs-12
+    h1 Payments
+    .table-responsive
+      table.table.table-bordered.table-striped
+        thead
+          tr.active
+            th Date
+            th User
+            th Account
+            th Amount
+            th Cur
+            th Payment ID
+            th Timecode
+            th File
+            th.text-center Action
+
+        tbody
+          - @payments.each do | payment |
+            - user = @users.first(id: payment.user_id)
+            tr
+              td = payment.create_at.strftime("%d.%m.%Y")
+              td = user.name
+              td = payment.account
+              td = payment.amount
+              td = user.currency
+              td = commas(user.id_cash)
+              td = payment.timecode.strftime("%d.%m.%Y %H:%M")
+              td
+                a href="/uploads/#{payment.filename}" attached
+
+              td.text-center
+                .btn-group
+                  button.btn.btn-default.btn-xs.dropdown-toggle data-toggle="dropdown"
+                    |Action&nbsp;
+                    span.caret
+                  ul.dropdown-menu.pull-right
+                    li
+                      a href="/admin/payments/#{payment.id}/view" View
+                    li
+                      a href="/admin/payments/#{payment.id}/edit" Edit
+                    li
+                      a href="/admin/payments/#{payment.id}/delete" Delete
+                  / onclick="javascript: return confirm('The paymant will be delete. Are you sure?')"
+.row
+  .col-xs-12
+    == will_paginate(@payments)
